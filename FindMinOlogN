@@ -1,0 +1,28 @@
+package FiftyArrayQ;
+
+public class FindMinOnlogn {
+
+
+        static int FindMin(int arr[],int low,int high){
+
+            while (low<high){
+                int mid = (low +high)/2;
+                if (arr[mid]==arr[high])
+                    high--;
+                else
+                    if (arr[mid]>arr[high])
+                        low = mid +1;
+                    else
+                        high =mid;
+            }
+            return arr[high];
+        }
+
+
+    public static void main(String[] args) {
+        int arr[] = {5,7,1,2};
+        int n = arr.length;
+        System.out.println("min element is"+ FindMin(arr,0,n-1));
+    }
+
+}
