@@ -1,0 +1,44 @@
+package FiftyArrayQ;
+
+import java.util.Arrays;
+
+public class SortArrayLargestSmallest {
+
+    static void reArrangeArr(int arr[], int n) {
+        Arrays.sort(arr);
+        // sorts the arrays
+        int tempArr[] = new int[n];
+        // to store the new array
+        // adding number from sorted array to new array
+        // travers from start to end simultaneously
+        int arrindex = 0;
+        for (int i = 0, j = n - 1; i < n / 2 || j > n / 2; i++, j--) {
+
+            if (arrindex < n) {
+                tempArr[arrindex] = arr[i];
+                arrindex++;
+            }
+
+                if (arrindex < n){
+                    tempArr[arrindex] = arr[j];
+                arrindex++;
+
+            }
+        }
+            for (int i = 0; i < n; i++)
+                 arr[i] = tempArr[i];
+
+        }
+
+
+
+
+    public static void main(String[] args) {
+        int arr[] = {9,8,7,5,6,4,3,2,1};
+        int n = arr.length;
+        reArrangeArr(arr,n);
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i] + " ");
+
+    }
+}
