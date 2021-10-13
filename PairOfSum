@@ -1,0 +1,36 @@
+package FiftyArrayQ;
+
+public class PaiirOfsum {
+
+    static boolean pairInSorted(int arr[],int n,int x){
+        int i;
+        for (i = 0;i<n-1;i++)
+            if (arr[i]>arr[i+1])
+                break;
+            int l = i+1%n;  //index of smallest element
+
+            int r = i; //index of largest
+            while (l!=r){
+                if (arr[l]+arr[r]<x)
+                    l++;
+                else  if (arr[l]+arr[r]>x)
+                    r--;
+                else
+                    return true;
+            }
+            return false;
+
+    }
+
+
+    public static void main(String[] args) {
+        int arr [] = {11,15,5,6,7,8};
+        int n = arr.length;
+        int x = 17;
+        if (pairInSorted(arr,n,x))
+            System.out.println("arrat contains pair of given sum X");
+        else
+            System.out.println("array does not contain pair of given sum X");
+
+    }
+}
