@@ -50,7 +50,7 @@ import java.util.Scanner;
             return mid;
         if (mid>low&& a[mid]<a[mid-1])
             return mid-1;
-        if (a[low]<=a[mid])
+        if (a[low]>=a[mid])
             return findPivot(a, low, mid-1);
         return findPivot(a,mid+1,high);
 
