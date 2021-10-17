@@ -1,0 +1,56 @@
+package FiftyArrayQ;
+
+public class DoubleFirstElement {
+
+    //function that pushes zero to end
+    static void pushZeroesToEnd(int arr[],int n){
+
+        int count =0; //count of non zero elements
+        for (int i=0;i<n;i++)
+            if (arr[i]!=0)
+                arr[count++]=arr[i];
+
+            //now all non zero are shifted to front
+        // count act as first index for zero
+        //while count is less than n all values are filled to zero
+        while (count<n)
+            arr[count++]=0;
+
+    }
+    static void modifyReArrangeArr(int arr[],int n){
+        //if arr[] contains single element only
+        if (n==1)
+            return;
+
+        //traverse the array
+        for (int i=0;i<n-1;i++){
+            //if true perform the modification
+            if ((arr[i]!=0) && (arr[i]==arr[i+1])) {
+                arr[i] = 2 * arr[i];
+                arr[i + 1] = 0;
+                i++;
+            }
+
+
+        }
+        pushZeroesToEnd(arr,n);
+    }
+    static void printArray(int arr[],int n){
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {2,2,0,4,0,8};
+        int n = arr.length;
+        System.out.println("original array is");
+        printArray(arr,n);
+        modifyReArrangeArr(arr,n);
+        System.out.println("modified array is");
+        printArray(arr,n);
+
+        }
+    }
+
+
