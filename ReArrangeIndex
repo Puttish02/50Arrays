@@ -1,0 +1,35 @@
+package FiftyArrayQ;
+
+import java.util.Arrays;
+
+public class ReArrangeIndex {
+
+    static int arr [] = {40,50,60,70};
+    static int index[] = {3,0,1,2};
+
+    //method to reaarange the elements
+
+    static void Rearrange(){
+
+        int temp [] =new int[arr.length];
+
+        for (int i=0;i<arr.length;i++)
+            temp[index[i]] = arr[i];
+
+        //copy temp to arr
+        for (int i=0;i< arr.length;i++){
+
+            arr[i] = temp[i];
+            index [i] = i;
+        }
+    }
+
+    //main methodd
+    public static void main(String[] args) {
+        Rearrange();
+        System.out.println("modified arraay is"+" ");
+        System.out.println(Arrays.toString(arr));
+        System.out.println("modified index is "+ " ");
+        System.out.println(Arrays.toString(index));
+    }
+}
