@@ -1,0 +1,40 @@
+package FiftyArrayQ;
+
+public class Reaarangeposneg {
+
+    // function to print arrays
+    static void printArray(int arr[],int n){
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+        System.out.println();
+    }
+
+
+    static void ReArrangeposneg(int arr[],int n){
+        //function to rearrange positive negative in array
+
+        int key,j;
+        for (int i=1;i<n;i++){
+            key=arr[i];
+// if current element is positive do nothing
+            if (key>0)
+                continue;
+            //if negative than shift positive elements to right
+
+            j= i-1;  //checks previous is pos or neg
+            // if positive then it exchanges the position with current negative element
+            while (j>=0 && arr[j]>0){ //loop check if there are positive num behind negative if present then shifts right
+                arr[j+1]=arr[j];
+                j=j-1;
+            }
+            arr[j+1]=key;
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {13,11,-11};
+        int n = arr.length;
+        ReArrangeposneg(arr,n);
+        printArray(arr,n);
+    }
+}
