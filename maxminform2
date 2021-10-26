@@ -1,0 +1,37 @@
+package FiftyArrayQ;
+
+public class MaxMinSet2 {
+
+    static void reArrange(int arr[],int n){
+        //print max at 1 posi,min at 2nd pos, 2 max at 3rd , sec mid at 4th and so on
+//initialize index of first minimum and first max
+        int maxind = n-1;int mindind =0;
+        int maxele = arr[n-1]+1; //store max element of array
+        for (int i=0;i<n;i++) {
+            if (i % 2 == 0) {
+                arr[i] += (arr[maxind] % maxele) * maxele;//at even index put max element
+                maxind--;
+            } else {
+                arr[i] += (arr[mindind] % maxele) * maxele;//at odd put min element
+                mindind++;
+            }
+        }
+            for (int i=0;i<n;i++)//array elements back to its original form
+                arr[i]=arr[i]/maxele;
+
+        }
+
+    public static void main(String[] args) {
+        int arr[] = {1,2,3,4,5};
+        int n=arr.length;
+        System.out.println("given array is");
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+        System.out.println("modified is");
+        reArrange(arr,n);
+        System.out.println("array is");
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+    }
+    }
+
