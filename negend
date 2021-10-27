@@ -1,0 +1,29 @@
+package FiftyArrayQ;
+
+public class negend {
+    //moves all negative to end
+    static void segregate(int arr[],int n) {
+        int temp[] = new int[n]; //temp array to store pos elemnts
+        int j=0;
+        for (int i=0;i<n;i++)  //stores pos elements from 0 to index till where pos can fit
+            if (arr[i]>=0)
+                temp[j++]=arr[i];
+
+            if (j==n||j==0)
+                return;
+            for (int i=0;i<n;i++)//stores neg till n-1 index
+                if (arr[i]<0)
+                    temp[j++]=arr[i];
+                for (int i=0;i<n;i++)//copies temp to arr
+                    arr[i]=temp[i];
+    }
+
+    public static void main(String[] args) {
+        int arr[]={-1,2,3,4,-99,22,33,-999};
+        int n = arr.length;
+        segregate(arr,n);
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+    }
+
+}
