@@ -1,0 +1,31 @@
+package FiftyArrayQ;
+
+public class insertsorted {
+    static int insertelement(int arr[],int n,int key,int capacity){
+        if (n>=capacity) //cannot insert more elements if n is more or equal to capacity
+            return n;
+        int i;
+        for (i=n-1;(i>=0&&arr[i]>key);i--)
+            arr[i+1]=arr[i];
+        arr[i+1]=key;
+        return (n+1);
+    }
+
+    public static void main(String[] args) {
+        int arr[]=new int[20];
+        arr[0]=1;
+        arr[1]=2;
+        arr[2]=4;
+        arr[3]=5;
+        int capacity= arr.length;
+        int n=4;
+        int key=6;
+        System.out.println("before");
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+        n= insertelement(arr,n,key,capacity);
+        System.out.println("\n after insertion");
+        for (int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+    }
+}
