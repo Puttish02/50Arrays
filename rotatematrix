@@ -1,0 +1,71 @@
+package FiftyArrayQ;
+
+public class RotateMatrix {
+
+    static int R = 4;
+    static int C = 4;
+    /* m=R and n=C
+
+     */
+
+    static void rotaremat(int m, int n, int arr[][]) {
+
+        int row = 0, col = 0;
+        int prev, curr;
+        /* row is intial row index
+        col is intial column index
+       */
+        while (row < m && col < n) {
+
+            if (row + 1 == m || col + 1 == n)
+                break;
+
+            prev = arr[row + 1][col];// stores first element of next row and replaces it by first row's element
+            for (int i = col; i < n; i++) {
+                //moves elements of first row 
+                curr = arr[row][i];
+                arr[row][i] = prev;
+                prev = curr;
+            }
+            row++;
+
+            for (int i = row; i < m - 1; i++) {
+                // moves element of last columns 
+                curr = arr[i][n - 1];
+                arr[i][n - 1] = prev;
+                prev = curr;
+            }
+            n--;
+            if (row < m) {
+                // moves elemnets of last row
+                for (int i = n - 1; i >= col; i--) {
+                    curr = arr[m - 1][i];
+                    arr[m - 1][i] = prev;
+                    prev = curr;
+                }
+
+
+            }
+            m--;
+            if (col < n) {
+                //moves elements of first column
+                for (int i = m - 1; i >= row; i--) {
+                    curr = arr[i][col];
+                    arr[i][col] = prev;
+                    prev = curr;
+                }
+            }
+            col++;
+        }
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++)
+                System.out.print(arr[i][j] + " ");
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr[][] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+        rotaremat(R,C,arr);
+    }
+}
